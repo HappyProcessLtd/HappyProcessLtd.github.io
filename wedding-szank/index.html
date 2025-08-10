@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zsófi & Zoltán – Esküvő Szank</title>
+    <meta name="description" content="Esküvői információk: időpont, helyszínek, program, térképek és naptár hozzáadás." />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --bg:#0f0f12;
+            --card:#17171c;
+            --muted:#a7abbb;
+            --text:#f4f5f7;
+            --accent:#7bdcb5; /* finom zöld */
+            --accent-2:#89a8ff; /* halvány kék */
+            --radius:20px;
+            --pad:22px;
+            --max:1050px;
+        }
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        body{
+            margin:0; background:linear-gradient(180deg,#0e0e11, #121218 45%, #0e0e11 100%);
+            color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+            -webkit-font-smoothing:antialiased; line-height:1.55;
+        }
+        a{color:var(--accent); text-decoration:none}
+        a:hover{text-decoration:underline}
+        .wrap{max-width:var(--max); margin:0 auto; padding: clamp(18px,2.5vw,28px)}
+        header.hero{
+            display:grid; gap:18px; padding: clamp(28px,6vw,64px) 0 14px;
+            align-items:center; justify-items:center; text-align:center;
+        }
+        .chip{
+            display:inline-flex; align-items:center; gap:10px; padding:8px 14px; border-radius:999px;
+            border:1px solid #2a2a33; color:var(--muted); background:rgba(255,255,255,0.02);
+        }
+        .chip svg{width:16px;height:16px;opacity:.9}
+        h1{
+            font-family:"Playfair Display", serif; font-weight:600; letter-spacing:.4px;
+            font-size: clamp(28px, 4.6vw, 56px); margin:6px 0 0;
+            background:linear-gradient(90deg,#fff, #cfd6ff 65%); -webkit-background-clip:text; background-clip:text; color:transparent;
+        }
+        .subtitle{color:var(--muted); margin-top:8px; font-size:clamp(14px,1.8vw,18px)}
+        .grid{display:grid; gap:18px}
+        @media (min-width:900px){
+            .grid-2{grid-template-columns:1fr 1fr}
+        }
+        section.card{
+            background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border:1px solid #24242c; border-radius:var(--radius);
+            padding:var(--pad); box-shadow: 0 10px 30px rgba(0,0,0,.25);
+        }
+        h2{
+            font-family:"Playfair Display", serif; font-weight:600; margin:0 0 10px;
+            font-size: clamp(20px,2.4vw,28px)
+        }
+        p.lead{color:#dfe2ee}
+        .list{
+            display:grid; gap:10px; margin:10px 0 0; padding:0; list-style:none;
+        }
+        .row{display:flex; gap:12px; align-items:flex-start}
+        .row svg{flex:0 0 20px; margin-top:2px; opacity:.9}
+        .muted{color:var(--muted)}
+        .btns{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+        .btn{
+            display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px; border:1px solid #2b2b35;
+            background:linear-gradient(180deg, rgba(123,220,181,.12), rgba(123,220,181,.06));
+            color:#eafff7; font-weight:600; cursor:pointer; text-decoration:none;
+        }
+        .btn.alt{background:linear-gradient(180deg, rgba(137,168,255,.12), rgba(137,168,255,.06));}
+        iframe.map{
+            width:100%; min-height:320px; border:0; border-radius:14px; box-shadow:0 6px 24px rgba(0,0,0,.25);
+        }
+        .program{display:grid; gap:10px; margin-top:6px}
+        .slot{
+            display:grid; grid-template-columns: 88px 1fr; gap:14px; align-items:start;
+            padding:12px; border:1px dashed #2a2a33; border-radius:14px; background:rgba(255,255,255,.02);
+        }
+        .time{font-weight:700; color:#fff}
+        .footer{
+            margin:30px 0 40px; color:var(--muted); text-align:center; font-size:14px
+        }
+        .pill{display:inline-block; padding:2px 8px; border-radius:999px; background:#1d2029; border:1px solid #2b2e3a; color:#c9cde0; font-size:12px}
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <header class="hero">
+        <div class="chip" aria-label="Esküvő helyszín és dátum">
+            <!-- helyszín/dátum pill -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                <path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/>
+            </svg>
+            <span>Szank • 2025. szeptember 20.</span>
+        </div>
+        <h1>Zsófi & Zoltán</h1>
+        <div class="subtitle">Szeretettel várunk esküvőnkre és az azt követő ünneplésre Szankon. Itt találsz minden fontos tudnivalót.</div>
+    </header>
+
+    <!-- Fő infók + Naptár -->
+    <section class="card grid grid-2" id="ido-hely">
+        <div>
+            <h2>Időpont & helyszínek</h2>
+            <ul class="list">
+                <li class="row">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>
+                    <div>
+                        <div><strong>Szertartás:</strong> 2025. 09. 20. (szombat) 15:00</div>
+                        <div class="muted">Helyszín: <span class="pill">Szanki Templom</span> (Kossuth Lajos u. 1.)</div>
+                    </div>
+                </li>
+                <li class="row">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <div>
+                        <div><strong>Lagzi:</strong> 17:30 —</div>
+                        <div class="muted">Helyszín: <span class="pill">Faluház</span> (Szank, Fő tér 5.)</div>
+                    </div>
+                </li>
+                <li class="row">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+                    <div>
+                        <div><strong>Dress code:</strong> elegáns, kényelmes</div>
+                        <div class="muted">Kültéri fotózás és rövid séta várható</div>
+                    </div>
+                </li>
+            </ul>
+            <div class="btns">
+                <a id="googleCal" class="btn" target="_blank" rel="noopener">
+                    <!-- naptár ikon -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                        <path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/>
+                    </svg>
+                    Hozzáadás Google Naptárhoz
+                </a>
+                <a id="icsLink" class="btn alt" download="zsofi-zoltan-eskuvo.ics">
+                    <!-- letöltés ikon -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+                    Letöltés: .ics
+                </a>
+            </div>
+        </div>
+        <div>
+            <h2>Rövid program</h2>
+            <div class="program">
+                <div class="slot">
+                    <div class="time">14:15</div>
+                    <div>Érkezés a templomhoz, helyfoglalás</div>
+                </div>
+                <div class="slot">
+                    <div class="time">15:00</div>
+                    <div>Esküvői szertartás</div>
+                </div>
+                <div class="slot">
+                    <div class="time">16:00</div>
+                    <div>Közös fotó, gratulációk</div>
+                </div>
+                <div class="slot">
+                    <div class="time">17:30</div>
+                    <div>Vacsora a Faluházban</div>
+                </div>
+                <div class="slot">
+                    <div class="time">20:30</div>
+                    <div>Nyitótánc, buli hajnalig 🎉</div>
+                </div>
+            </div>
+            <p class="muted" style="margin-top:10px">A részletes programot az esemény közeledtével frissítjük.</p>
+        </div>
+    </section>
+
+    <!-- Térképek -->
+    <section class="card grid grid-2" id="terkepek" aria-label="Térképek">
+        <div>
+            <h2>Templom</h2>
+            <p class="muted">Szanki Templom • Kossuth Lajos u. 1.</p>
+            <iframe
+                    class="map"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps?q=Szank%20Templom&output=embed">
+            </iframe>
+            <div class="btns">
+                <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Szank%20Templom%2C%20Kossuth%20Lajos%20u.%201.">
+                    Megnyitás Google Térképen
+                </a>
+            </div>
+        </div>
+        <div>
+            <h2>Lagzi / Faluház</h2>
+            <p class="muted">Fő tér 5., Szank</p>
+            <iframe
+                    class="map"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps?q=Szank%20Faluh%C3%A1z&output=embed">
+            </iframe>
+            <div class="btns">
+                <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Szank%20Faluh%C3%A1z%2C%20F%C5%91%20t%C3%A9r%205.">
+                    Megnyitás Google Térképen
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Szállás -->
+    <section class="card grid grid-2" id="szallas">
+        <div>
+            <h2>Szállás</h2>
+            <p class="lead">Ajánlott szállás a közelben</p>
+            <ul class="list">
+                <li class="row">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg>
+                    <div>
+                        <div><strong>Szanki Vendégház</strong></div>
+                        <div class="muted">Központi elhelyezkedés, parkolás</div>
+                    </div>
+                </li>
+                <li class="row">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg>
+                    <div>
+                        <div><strong>Tanyasi Pihenő</strong></div>
+                        <div class="muted">Csendes környezet, családbarát</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h2>Térkép – Szállás</h2>
+            <p class="muted">Állítsd be a pontos címet</p>
+            <iframe
+                    class="map"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps?q=Szank%20Sz%C3%A1ll%C3%A1s&output=embed">
+            </iframe>
+            <div class="btns">
+                <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Szank%20sz%C3%A1ll%C3%A1s">
+                    Megnyitás Google Térképen
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hasznos tudnivalók -->
+    <section class="card" id="tudnivalok">
+        <h2>Hasznos tudnivalók</h2>
+        <ul class="list">
+            <li class="row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 7h7l-5.5 4.2L19 21l-7-4.5L5 21l2.5-7.8L2 9h7z"/></svg>
+                <div><strong>Ajándék</strong><div class="muted">A jelenlétetek a legnagyobb ajándék — ha mégis szeretnétek hozzájárulni, örülünk a borítéknak.</div></div>
+            </li>
+            <li class="row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <div><strong>Kapcsolat</strong><div class="muted">Kérdés esetén: <a href="mailto:balogh.zoltan@happy-process.hu">balogh.zoltan@happy-process.hu</a></div></div>
+            </li>
+        </ul>
+    </section>
+
+    <div class="footer">
+        © 2025 Zsófi & Zoltán • Találkozunk Szankon! • <a href="#ido-hely">Vissza az elejére</a>
+    </div>
+</div>
+
+<script>
+    // ======= KONFIG =======
+    // Töltsd ki a pontos adatokat (időzónát hagyd "Europe/Budapest")
+    const eventData = {
+        title: "Zsófi & Zoltán – Esküvő",
+        location: "Faluház, Fő tér 5., Szank, Magyarország",
+        description: "Szeretettel várunk az esküvőnkre Szankon! Részletek: https://<sajat-domaind>/wedding-szank/",
+        tz: "Europe/Budapest",
+        // Időpontok: YYYY-MM-DDTHH:mm (helyi idő, HU)
+        startLocal: "2025-09-20T15:00",
+        endLocal:   "2025-09-21T02:00"
+    };
+
+    // ======= Segédfüggvények =======
+    function toIcsDate(dtStr){
+        // bemenet: "2025-09-20T15:00" helyi idő -> ICS formátum (floating vagy TZID-es)
+        // Itt TZID-del tároljuk (nem konvertálunk UTC-re, hogy offline is jól nézzen ki)
+        const [d,t] = dtStr.split("T");
+        return d.replace(/-/g,"") + "T" + t.replace(":","") + "00";
+    }
+
+    // Google Calendar URL (UTC kell). Konvertálunk Intl API-val.
+    function toUtcBasic(dtStr){
+        const dt = new Date(dtStr+":00"); // helyi idő
+        const y = dt.getUTCFullYear();
+        const m = String(dt.getUTCMonth()+1).padStart(2,"0");
+        const d = String(dt.getUTCDate()).padStart(2,"0");
+        const H = String(dt.getUTCHours()).padStart(2,"0");
+        const M = String(dt.getUTCMinutes()).padStart(2,"0");
+        const S = String(dt.getUTCSeconds()).padStart(2,"0");
+        return `${y}${m}${d}T${H}${M}${S}Z`;
+    }
+
+    // ======= .ics generálás (adat URI) =======
+    const ics = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Happy Process//Wedding//HU",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        "BEGIN:VEVENT",
+        `UID:hp-wedding-${Date.now()}@happy-process.hu`,
+        `SUMMARY:${eventData.title}`,
+        `DTSTART;TZID=${eventData.tz}:${toIcsDate(eventData.startLocal)}`,
+        `DTEND;TZID=${eventData.tz}:${toIcsDate(eventData.endLocal)}`,
+        `LOCATION:${eventData.location}`,
+        `DESCRIPTION:${eventData.description}`,
+        "END:VEVENT",
+        "END:VCALENDAR"
+    ].join("\r\n");
+
+    const icsHref = "data:text/calendar;charset=utf-8," + encodeURIComponent(ics);
+    document.getElementById("icsLink").setAttribute("href", icsHref);
+
+    // ======= Google Calendar link =======
+    const gcBase = "https://www.google.com/calendar/render?action=TEMPLATE";
+    const gcParams = new URLSearchParams({
+        text: eventData.title,
+        details: eventData.description,
+        location: eventData.location,
+        dates: `${toUtcBasic(eventData.startLocal)}/${toUtcBasic(eventData.endLocal)}`
+    });
+    document.getElementById("googleCal").setAttribute("href", `${gcBase}&${gcParams.toString()}`);
+</script>
+</body>
+</html>
