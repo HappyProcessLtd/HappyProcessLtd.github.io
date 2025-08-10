@@ -1,84 +1,253 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Eszter & Zoli – Esküvői buli (Szank)</title>
-    <meta name="description" content="Eszter & Zoli baráti esküvői buli – időpont, helyszínek, térképek és naptár." />
+    <meta name="description" content="Eszter & Zoli baráti esküvői buli – időpont, helyszínek, térképek és naptár."/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
     <style>
-        :root{
-            --bg:#0f1014; --card:#171821;
-            --text:#eef1fa; --muted:#aeb3c6;
-            --line:#252836; --accent:#89a8ff; --accent2:#7bdcb5;
-            --r:18px; --pad:22px; --max:1040px;
+        :root {
+            --bg: #0f1014;
+            --card: #171821;
+            --text: #eef1fa;
+            --muted: #aeb3c6;
+            --line: #252836;
+            --accent: #89a8ff;
+            --accent2: #7bdcb5;
+            --r: 18px;
+            --pad: 22px;
+            --max: 1040px;
         }
-        *{box-sizing:border-box}
-        html,body{height:100%}
-        body{
-            margin:0; color:var(--text);
+
+        * {
+            box-sizing: border-box
+        }
+
+        html, body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            color: var(--text);
             background: radial-gradient(1200px 600px at 20% 0%, #141623 0%, #0f1014 55%) fixed;
             font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-            -webkit-font-smoothing: antialiased; line-height:1.55;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.55;
         }
-        a{color:var(--accent); text-decoration:none}
-        a:hover{text-decoration:underline}
-        .wrap{max-width:var(--max); margin:0 auto; padding: clamp(18px,2.5vw,28px)}
-        header.hero{
-            display:grid; justify-items:center; text-align:center;
-            gap:12px; padding: clamp(28px,6vw,64px) 0 10px;
+
+        a {
+            color: var(--accent);
+            text-decoration: none
         }
-        .date-chip{
-            display:inline-flex; align-items:center; gap:10px;
-            padding:8px 14px; border:1px solid var(--line); border-radius:999px;
-            background:rgba(255,255,255,.02); color:var(--muted); font-weight:600;
+
+        a:hover {
+            text-decoration: underline
         }
-        .date-chip svg{width:16px;height:16px;opacity:.9}
-        h1{
-            font-family:"Playfair Display", serif; font-weight:600;
-            font-size: clamp(28px, 4.6vw, 56px); margin:6px 0 0;
-            background:linear-gradient(90deg,#fff, #cfd6ff 65%); -webkit-background-clip:text; color:transparent;
-            letter-spacing:.3px;
+
+        .wrap {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: clamp(18px, 2.5vw, 28px)
         }
-        .subtitle{color:var(--muted); margin-top:6px; font-size:clamp(14px,1.8vw,18px)}
-        .grid{display:grid; gap:18px}
-        @media (min-width:900px){ .grid-2{grid-template-columns:1fr 1fr} }
-        section.card{
-            background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-            border:1px solid var(--line); border-radius:var(--r);
-            padding:var(--pad); box-shadow: 0 10px 30px rgba(0,0,0,.28);
+
+        header.hero {
+            display: grid;
+            justify-items: center;
+            text-align: center;
+            gap: 12px;
+            padding: clamp(28px, 6vw, 64px) 0 10px;
         }
-        h2{
-            font-family:"Playfair Display", serif; font-weight:600; margin:0 0 10px;
-            font-size: clamp(20px,2.3vw,28px)
+
+        .date-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .02);
+            color: var(--muted);
+            font-weight: 600;
         }
-        .list{list-style:none; margin:8px 0 0; padding:0; display:grid; gap:10px}
-        .row{display:flex; gap:12px; align-items:flex-start}
-        .row svg{flex:0 0 20px; margin-top:2px; opacity:.9}
-        .muted{color:var(--muted)}
-        .program{display:grid; gap:10px; margin-top:8px}
-        .slot{
-            display:grid; grid-template-columns:84px 1fr; gap:14px; align-items:start;
-            padding:12px; border:1px dashed var(--line); border-radius:14px; background:rgba(255,255,255,.02);
+
+        .date-chip svg {
+            width: 16px;
+            height: 16px;
+            opacity: .9
         }
-        .time{font-weight:700}
-        .btns{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
-        .btn{
-            display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:12px;
-            border:1px solid var(--line); background:rgba(255,255,255,.03);
-            color:#f2f5ff; font-weight:600; text-decoration:none;
+
+        h1 {
+            font-family: "Playfair Display", serif;
+            font-weight: 600;
+            font-size: clamp(28px, 4.6vw, 56px);
+            margin: 6px 0 0;
+            background: linear-gradient(90deg, #fff, #cfd6ff 65%);
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: .3px;
         }
-        .btn:hover{background:rgba(255,255,255,.05)}
-        .btn.sm{padding:6px 10px; font-weight:600; font-size:14px; opacity:.95}
-        .btn .icon{width:16px;height:16px; opacity:.9}
-        iframe.map{
-            width:100%; min-height:320px; border:0; border-radius:14px; box-shadow:0 6px 24px rgba(0,0,0,.25);
+
+        .subtitle {
+            color: var(--muted);
+            margin-top: 6px;
+            font-size: clamp(14px, 1.8vw, 18px)
         }
-        .pill{display:inline-block; padding:2px 8px; border-radius:999px; background:#1b1e2a; border:1px solid var(--line); color:#cdd3e9; font-size:12px}
-        .footer{margin:30px 0 40px; color:var(--muted); text-align:center; font-size:14px}
+
+        .grid {
+            display: grid;
+            gap: 18px
+        }
+
+        @media (min-width: 900px) {
+            .grid-2 {
+                grid-template-columns:1fr 1fr
+            }
+        }
+
+        section.card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, .03), rgba(255, 255, 255, .015));
+            border: 1px solid var(--line);
+            border-radius: var(--r);
+            padding: var(--pad);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .28);
+        }
+
+        h2 {
+            font-family: "Playfair Display", serif;
+            font-weight: 600;
+            margin: 0 0 10px;
+            font-size: clamp(20px, 2.3vw, 28px)
+        }
+
+        .list {
+            list-style: none;
+            margin: 8px 0 0;
+            padding: 0;
+            display: grid;
+            gap: 10px
+        }
+
+        .row {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start
+        }
+
+        .row svg {
+            flex: 0 0 20px;
+            margin-top: 2px;
+            opacity: .9
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        .program {
+            display: grid;
+            gap: 10px;
+            margin-top: 8px
+        }
+
+        .slot {
+            display: grid;
+            grid-template-columns:84px 1fr;
+            gap: 14px;
+            align-items: start;
+            padding: 12px;
+            border: 1px dashed var(--line);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .02);
+        }
+
+        .time {
+            font-weight: 700
+        }
+
+        .btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .03);
+            color: #f2f5ff;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, .05)
+        }
+
+        .btn.sm {
+            padding: 6px 10px;
+            font-weight: 600;
+            font-size: 14px;
+            opacity: .95
+        }
+
+        .btn .icon {
+            width: 16px;
+            height: 16px;
+            opacity: .9
+        }
+
+        iframe.map {
+            width: 100%;
+            min-height: 320px;
+            border: 0;
+            border-radius: 14px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, .25);
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: #1b1e2a;
+            border: 1px solid var(--line);
+            color: #cdd3e9;
+            font-size: 12px
+        }
+
+        .footer {
+            margin: 30px 0 40px;
+            color: var(--muted);
+            text-align: center;
+            font-size: 14px
+        }
+
         /* finom elválasztó a szekciók között mobilon */
-        .spacer{height:8px}
+        .spacer {
+            height: 8px
+        }
+
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 14px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, .35);
+            background: #0f1014;
+        }
+
+        .map-container iframe {
+            display: block;
+            width: 100%;
+            height: 320px; /* vagy 100% ha fix magasságú szülőben van */
+            border: 0;
+        }
     </style>
 </head>
 <body>
@@ -86,7 +255,9 @@
     <!-- FEJLÉC – IDŐPONT ELŐL -->
     <header class="hero" aria-label="Esemény">
         <div class="date-chip">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                <path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/>
+            </svg>
             <span>2025. szeptember 6., szombat</span>
         </div>
         <h1>Eszter &amp; Zoli</h1>
@@ -100,12 +271,21 @@
                 Hozzáadás Google Naptárhoz
             </a>
             <a id="icsLink" class="btn sm" download="eszter-zoli-eskuvoi-buli.ics">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/>
+                </svg>
                 .ics letöltése
             </a>
         </div>
     </header>
 
+    <section class="card" id="video">
+        <h2>Esküvői buli – Híradó különkiadás</h2>
+        <video controls preload="metadata" style="width:100%; border-radius:14px; box-shadow:0 6px 24px rgba(0,0,0,.35)">
+            <source src="video/hirado.mp4" type="video/mp4">
+            A böngésződ nem támogatja a videólejátszást.
+        </video>
+    </section>
     <!-- PROGRAM RÖVIDEN -->
     <section class="card" id="program">
         <h2>Program</h2>
@@ -135,13 +315,14 @@
             <p class="muted">Megnyitás Térképen:
                 <a target="_blank" rel="noopener" href="https://maps.app.goo.gl/gjWPrcG2ZqjhF1hP9">Google Maps</a>
             </p>
-            <iframe
-                    class="map"
-                    loading="lazy"
-                    allowfullscreen
-                    referrerpolicy="no-referrer-when-downgrade"
-                    src="https://www.google.com/maps?q=https%3A%2F%2Fmaps.app.goo.gl%2FgjWPrcG2ZqjhF1hP9&output=embed">
-            </iframe>
+            <div class="map-container">
+                <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5487.250147141694!2d19.66974039760044!3d46.555103059197684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474397cf63a39fa5%3A0x8f08d01901d0cc73!2zVsO2csO2c21hcnR5IE1paMOhbHkgS8O2esO2c3PDqWdpIFN6w61udMOpcg!5e0!3m2!1sen!2shu!4v1754835582620!5m2!1sen!2shu"
+                        allowfullscreen
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
             <div class="btns">
                 <a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/gjWPrcG2ZqjhF1hP9">Útvonal a buliba</a>
             </div>
@@ -152,18 +333,17 @@
             <p class="muted">Kb. 600 m (~8 perc séta) a bulitól. Megnyitás:
                 <a target="_blank" rel="noopener" href="https://maps.app.goo.gl/FrFgutxisnNQAXar5">Google Maps</a>
             </p>
-            <iframe
-                    class="map"
-                    loading="lazy"
-                    allowfullscreen
-                    referrerpolicy="no-referrer-when-downgrade"
-                    src="https://www.google.com/maps?q=https%3A%2F%2Fmaps.app.goo.gl%2FFrFgutxisnNQAXar5&output=embed">
-            </iframe>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5487.250147141694!2d19.66974039760044!3d46.555103059197684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474397c877183b9f%3A0x2d96f1084ebb1aa6!2zWmFuayBWZXrDqXIgU3BvcnRzesOhbGzDsyDDqXMgVGVrZWNzYXJub2s!5e0!3m2!1sen!2shu!4v1754835751302!5m2!1sen!2shu"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
             <div class="btns">
                 <a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/FrFgutxisnNQAXar5">Útvonal a szállásra</a>
             </div>
             <div class="row" style="margin-top:10px">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
                 <div>
                     <strong>Kulcsátvétel</strong>
                     <div class="muted">Kérünk, <u>hívjatok fel érkezés előtt</u>; annak fényében mondjuk, hol tudjátok átvenni a kulcsot:
@@ -188,11 +368,11 @@
         tz: "Europe/Budapest",
         // Időpontok helyi idő szerint (HU)
         startLocal: "2025-09-06T17:00",
-        endLocal:   "2025-09-07T02:00",
+        endLocal: "2025-09-07T02:00",
         // Hasznos lokációk a leírásba
         partyUrl: "https://maps.app.goo.gl/gjWPrcG2ZqjhF1hP9",
-        stayUrl:  "https://maps.app.goo.gl/FrFgutxisnNQAXar5",
-        keyAlt:   "https://maps.app.goo.gl/gVR1T7XB9GarKFxt5",
+        stayUrl: "https://maps.app.goo.gl/FrFgutxisnNQAXar5",
+        keyAlt: "https://maps.app.goo.gl/gVR1T7XB9GarKFxt5",
         details:
             `• 17:00 – Érkezés, vendégvárás
 • 18:00 – Vacsora
@@ -204,18 +384,19 @@ Kulcs: érkezés előtt hívj; átvétel a bulin vagy itt: https://maps.app.goo.
     };
 
     // ======= Segédfüggvények =======
-    function toIcsDate(dtStr){
-        const [d,t] = dtStr.split("T");
-        return d.replace(/-/g,"") + "T" + t.replace(":","") + "00";
+    function toIcsDate(dtStr) {
+        const [d, t] = dtStr.split("T");
+        return d.replace(/-/g, "") + "T" + t.replace(":", "") + "00";
     }
-    function toUtcBasic(dtStr){
-        const dt = new Date(dtStr+":00"); // helyi
+
+    function toUtcBasic(dtStr) {
+        const dt = new Date(dtStr + ":00"); // helyi
         const y = dt.getUTCFullYear();
-        const m = String(dt.getUTCMonth()+1).padStart(2,"0");
-        const d = String(dt.getUTCDate()).padStart(2,"0");
-        const H = String(dt.getUTCHours()).padStart(2,"0");
-        const M = String(dt.getUTCMinutes()).padStart(2,"0");
-        const S = String(dt.getUTCSeconds()).padStart(2,"0");
+        const m = String(dt.getUTCMonth() + 1).padStart(2, "0");
+        const d = String(dt.getUTCDate()).padStart(2, "0");
+        const H = String(dt.getUTCHours()).padStart(2, "0");
+        const M = String(dt.getUTCMinutes()).padStart(2, "0");
+        const S = String(dt.getUTCSeconds()).padStart(2, "0");
         return `${y}${m}${d}T${H}${M}${S}Z`;
     }
 
@@ -236,7 +417,7 @@ Kulcs: érkezés előtt hívj; átvétel a bulin vagy itt: https://maps.app.goo.
         "END:VEVENT",
         "END:VCALENDAR"
     ].join("\r\n");
-    document.getElementById("icsLink").setAttribute("href","data:text/calendar;charset=utf-8,"+encodeURIComponent(ics));
+    document.getElementById("icsLink").setAttribute("href", "data:text/calendar;charset=utf-8," + encodeURIComponent(ics));
 
     // ======= Google Calendar link (UTC formátum) =======
     const gcBase = "https://www.google.com/calendar/render?action=TEMPLATE";
@@ -252,20 +433,20 @@ Kulcs: érkezés előtt hívj; átvétel a bulin vagy itt: https://maps.app.goo.
 <!-- JSON-LD (Esemény) -->
 <script type="application/ld+json">
     {
-        "@context":"https://schema.org",
-        "@type":"SocialEvent",
-        "name":"Eszter & Zoli – Esküvői buli",
-        "startDate":"2025-09-06T17:00:00+02:00",
-        "endDate":"2025-09-07T02:00:00+02:00",
-        "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus":"https://schema.org/EventScheduled",
-        "location":{
-            "@type":"Place",
-            "name":"Szank",
-            "address":"Szank, Magyarország"
+        "@context": "https://schema.org",
+        "@type": "SocialEvent",
+        "name": "Eszter & Zoli – Esküvői buli",
+        "startDate": "2025-09-06T17:00:00+02:00",
+        "endDate": "2025-09-07T02:00:00+02:00",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+            "@type": "Place",
+            "name": "Szank",
+            "address": "Szank, Magyarország"
         },
-        "description":"Laza baráti esküvői buli Szankon – vacsora, zene, tánc.",
-        "url":"./"
+        "description": "Laza baráti esküvői buli Szankon – vacsora, zene, tánc.",
+        "url": "./"
     }
 </script>
 </body>
