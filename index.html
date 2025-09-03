@@ -12,6 +12,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+	<script>
+		(function () {
+			var cutoff = new Date('2025-11-03T00:00:00+02:00');
+			var now = new Date();
+
+			var onRoot = location.pathname === '/' || /\/index\.html?$/.test(location.pathname);
+			var alreadyCh = location.pathname.toLowerCase().startsWith('/ch');
+
+			if (onRoot && !alreadyCh && now < cutoff) {
+				location.replace('/ch/');
+			}
+		})();
+	</script>
+
 </head>
 	<body class="is-preload">
 
